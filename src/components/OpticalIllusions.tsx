@@ -42,8 +42,8 @@ function MullerLyer() {
 
 
 function KanizsaTriangle() {
-  const black = "#000000";
-  const white = "#ffffff";
+  const black = "#080808";
+  const cream = "#F1E7C8";
 
   return (
     <svg
@@ -52,65 +52,48 @@ function KanizsaTriangle() {
       xmlns="http://www.w3.org/2000/svg"
       role="img"
       aria-label="Kanizsa triangle optical illusion"
-      style={{ display: "block", background: white }}
+      style={{ display: "block", background: black }}
     >
-      <rect
-        x="0"
-        y="0"
-        width="1000"
-        height="1000"
-        style={{ fill: white }}
-      />
+      {/* Black background */}
+      <rect width="1000" height="1000" fill={black} />
 
-      {/* Top circle with a downward-facing cutout */}
+      {/* Top cream Pac-Man with downward opening */}
       <path
-        d="
-          M 500 0
-          A 125 125 0 1 1 499.99 0
-          Z
-          M 500 125
-          L 437.5 233.3
-          L 562.5 233.3
-          Z
-        "
-        fill={black}
+        d="M 500 0
+           A 125 125 0 1 1 499.99 0
+           L 437.5 108.3
+           L 562.5 108.3 Z"
+        fill={cream}
         fillRule="evenodd"
+        transform="translate(0 125)"
       />
 
-      {/* Bottom-left circle: cutout faces inward */}
+      {/* Bottom-left cream Pac-Man */}
       <path
-        d="
-          M 125 650
-          A 125 125 0 1 1 124.99 650
-          Z
-          M 125 775
-          L 250 775
-          L 187.5 666.7
-          Z
-        "
-        fill={black}
+        d="M 125 650
+           A 125 125 0 1 1 124.99 650
+           L 250 650
+           L 187.5 541.7 Z"
+        fill={cream}
         fillRule="evenodd"
+        transform="translate(0 125)"
       />
 
-      {/* Bottom-right circle: cutout faces inward */}
+      {/* Bottom-right cream Pac-Man */}
       <path
-        d="
-          M 875 650
-          A 125 125 0 1 1 874.99 650
-          Z
-          M 875 775
-          L 750 775
-          L 812.5 666.7
-          Z
-        "
-        fill={black}
+        d="M 875 650
+           A 125 125 0 1 1 874.99 650
+           L 750 650
+           L 812.5 541.7 Z"
+        fill={cream}
         fillRule="evenodd"
+        transform="translate(0 125)"
       />
 
-      {/* Three separate edges of the illusory triangle */}
+      {/* Illusory triangle edges */}
       <g
         fill="none"
-        stroke={black}
+        stroke={cream}
         strokeWidth="7"
         strokeLinecap="butt"
       >
