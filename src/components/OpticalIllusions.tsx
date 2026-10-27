@@ -40,57 +40,68 @@ function MullerLyer() {
 
 
 
+
 function KanizsaTriangle() {
-  const cream = "#f1e7c8";
+  const black = "#000000";
+  const white = "#ffffff";
 
   return (
     <svg
-      viewBox="0 0 200 180"
+      viewBox="0 0 200 200"
       className="w-full h-full"
       xmlns="http://www.w3.org/2000/svg"
       role="img"
       aria-label="Kanizsa triangle optical illusion"
     >
-      <rect width="200" height="180" fill="#080808" />
+      <rect width="200" height="200" fill={white} />
 
-      {/* Top disc: opening faces downward */}
+      {/* Top Pac-Man: opening faces down */}
       <path
-        d="M 100 28
-           A 32 32 0 1 1 99.99 28
-           L 83 57
-           L 117 57
+        d="M 100 25
+           A 25 25 0 1 1 99.99 25
+           L 100 25
+           L 87.5 46.65
            Z"
-        fill={cream}
-        fillRule="evenodd"
-        transform="rotate(0 100 60)"
+        fill={black}
+        transform="translate(0 0)"
       />
 
-      {/* Bottom-left disc: opening faces upper-right */}
+      {/* Bottom-left Pac-Man: opening faces upper-right */}
       <path
-        d="M 45 128
-           A 32 32 0 1 1 44.99 128
-           L 73 111
-           L 73 145
+        d="M 25 155
+           A 25 25 0 1 1 24.99 155
+           L 46.65 142.5
+           L 25 142.5
            Z"
-        fill={cream}
-        fillRule="evenodd"
-        transform="rotate(0 60 128)"
+        fill={black}
       />
 
-      {/* Bottom-right disc: opening faces upper-left */}
+      {/* Bottom-right Pac-Man: opening faces upper-left */}
       <path
-        d="M 155 128
-           A 32 32 0 1 1 154.99 128
-           L 127 111
-           L 127 145
+        d="M 175 155
+           A 25 25 0 1 1 174.99 155
+           L 153.35 142.5
+           L 175 142.5
            Z"
-        fill={cream}
-        fillRule="evenodd"
-        transform="rotate(0 140 128)"
+        fill={black}
       />
+
+      {/* Triangle illusion: three separate black edges */}
+      <g
+        fill="none"
+        stroke={black}
+        strokeWidth="1.5"
+        strokeLinecap="butt"
+      >
+        <path d="M 25 70 H 75 L 50 113" />
+        <path d="M 125 70 H 175 L 150 113" />
+        <path d="M 75 155 L 100 198 L 125 155" />
+      </g>
     </svg>
   );
 }
+
+export default KanizsaTriangle;
 
 
 
