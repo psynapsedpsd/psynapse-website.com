@@ -41,76 +41,71 @@ function MullerLyer() {
 
 
 
+
 function KanizsaTriangle() {
   const black = "#080808";
   const cream = "#F1E7C8";
 
   return (
     <svg
-      viewBox="0 0 1000 1000"
+      viewBox="0 0 400 400"
       width="100%"
-      height="auto"
       xmlns="http://www.w3.org/2000/svg"
       role="img"
       aria-label="Kanizsa triangle optical illusion"
       style={{
         display: "block",
-        backgroundColor: black,
-        maxWidth: "100%",
+        width: "100%",
+        height: "auto",
+        background: black,
       }}
     >
       {/* Background */}
-      <rect
-        x="0"
-        y="0"
-        width="1000"
-        height="1000"
-        fill={black}
-      />
+      <rect width="400" height="400" fill={black} />
 
-      {/* Top circle */}
-      <circle cx="500" cy="125" r="125" fill={cream} />
-
-      {/* Top cutout: points upward */}
+      {/* Top Pac-Man: mouth faces downward */}
+      <circle cx="200" cy="65" r="34" fill={cream} />
       <path
-        d="M 500 125 L 437.5 233.3 L 562.5 233.3 Z"
+        d="M 200 65 L 183 94 L 217 94 Z"
         fill={black}
       />
 
-      {/* Bottom-left circle */}
-      <circle cx="125" cy="773" r="126" fill={cream} />
-
-      {/* Bottom-left cutout */}
+      {/* Bottom-left Pac-Man: mouth faces upper-right */}
+      <circle cx="75" cy="300" r="34" fill={cream} />
       <path
-        d="M 125 775 L 189 665 L 252 775 Z"
+        d="M 75 300 L 92 270.6 L 109 300 Z"
         fill={black}
       />
 
-      {/* Bottom-right circle */}
-      <circle cx="875" cy="773" r="126" fill={cream} />
-
-      {/* Bottom-right cutout */}
+      {/* Bottom-right Pac-Man: mouth faces upper-left */}
+      <circle cx="325" cy="300" r="34" fill={cream} />
       <path
-        d="M 875 775 L 811 665 L 748 775 Z"
+        d="M 325 300 L 308 270.6 L 291 300 Z"
         fill={black}
       />
 
-      {/* Three disconnected triangle edges */}
+      {/* Three disconnected contour edges */}
       <g
         fill="none"
         stroke={cream}
-        strokeWidth="7"
+        strokeWidth="1.8"
         strokeLinecap="butt"
+        strokeLinejoin="miter"
       >
-        <path d="M 120 343 H 375 L 250 562" />
-        <path d="M 625 343 H 880 L 750 562" />
-        <path d="M 375 775 L 500 998 L 625 775" />
+        {/* Upper-left edge */}
+        <path d="M 80 140 H 160 L 130 195" />
+
+        {/* Upper-right edge */}
+        <path d="M 240 140 H 320 L 280 195" />
+
+        {/* Bottom V */}
+        <path d="M 160 300 L 200 365 L 240 300" />
       </g>
     </svg>
   );
 }
-
 export default KanizsaTriangle;
+
 
 function HermannGrid() {
   const size = 13; const gap = 6; const cols = 7; const rows = 6;
