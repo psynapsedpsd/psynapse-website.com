@@ -49,48 +49,53 @@ function KanizsaTriangle() {
     <svg
       viewBox="0 0 1000 1000"
       width="100%"
+      height="auto"
       xmlns="http://www.w3.org/2000/svg"
       role="img"
       aria-label="Kanizsa triangle optical illusion"
-      style={{ display: "block", background: black }}
+      style={{
+        display: "block",
+        backgroundColor: black,
+        maxWidth: "100%",
+      }}
     >
-      {/* Black background */}
-      <rect width="1000" height="1000" fill={black} />
-
-      {/* Top cream Pac-Man with downward opening */}
-      <path
-        d="M 500 0
-           A 125 125 0 1 1 499.99 0
-           L 437.5 108.3
-           L 562.5 108.3 Z"
-        fill={cream}
-        fillRule="evenodd"
-        transform="translate(0 125)"
+      {/* Background */}
+      <rect
+        x="0"
+        y="0"
+        width="1000"
+        height="1000"
+        fill={black}
       />
 
-      {/* Bottom-left cream Pac-Man */}
+      {/* Top circle */}
+      <circle cx="500" cy="125" r="125" fill={cream} />
+
+      {/* Top cutout: points upward */}
       <path
-        d="M 125 650
-           A 125 125 0 1 1 124.99 650
-           L 250 650
-           L 187.5 541.7 Z"
-        fill={cream}
-        fillRule="evenodd"
-        transform="translate(0 125)"
+        d="M 500 125 L 437.5 233.3 L 562.5 233.3 Z"
+        fill={black}
       />
 
-      {/* Bottom-right cream Pac-Man */}
+      {/* Bottom-left circle */}
+      <circle cx="125" cy="773" r="126" fill={cream} />
+
+      {/* Bottom-left cutout */}
       <path
-        d="M 875 650
-           A 125 125 0 1 1 874.99 650
-           L 750 650
-           L 812.5 541.7 Z"
-        fill={cream}
-        fillRule="evenodd"
-        transform="translate(0 125)"
+        d="M 125 775 L 189 665 L 252 775 Z"
+        fill={black}
       />
 
-      {/* Illusory triangle edges */}
+      {/* Bottom-right circle */}
+      <circle cx="875" cy="773" r="126" fill={cream} />
+
+      {/* Bottom-right cutout */}
+      <path
+        d="M 875 775 L 811 665 L 748 775 Z"
+        fill={black}
+      />
+
+      {/* Three disconnected triangle edges */}
       <g
         fill="none"
         stroke={cream}
@@ -106,11 +111,6 @@ function KanizsaTriangle() {
 }
 
 export default KanizsaTriangle;
-
-
-
-
-
 
 function HermannGrid() {
   const size = 13; const gap = 6; const cols = 7; const rows = 6;
