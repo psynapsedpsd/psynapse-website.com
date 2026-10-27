@@ -48,42 +48,66 @@ function KanizsaTriangle() {
   return (
     <svg
       viewBox="0 0 1000 1000"
-      className="w-full h-full"
+      width="100%"
       xmlns="http://www.w3.org/2000/svg"
       role="img"
       aria-label="Kanizsa triangle optical illusion"
+      style={{ display: "block", background: white }}
     >
-      {/* White background */}
-      <rect width="1000" height="1000" fill={white} />
-
-      {/* Top black circle */}
-      <circle cx="500" cy="125" r="125" fill={black} />
-
-      {/* Cutout facing downward */}
-      <path
-        d="M 500 125 L 437 235 L 562 235 Z"
-        fill={white}
+      <rect
+        x="0"
+        y="0"
+        width="1000"
+        height="1000"
+        style={{ fill: white }}
       />
 
-      {/* Bottom-left black circle */}
-      <circle cx="125" cy="773" r="126" fill={black} />
-
-      {/* Cutout facing inward */}
+      {/* Top circle with a downward-facing cutout */}
       <path
-        d="M 125 775 L 189 665 L 252 775 Z"
-        fill={white}
+        d="
+          M 500 0
+          A 125 125 0 1 1 499.99 0
+          Z
+          M 500 125
+          L 437.5 233.3
+          L 562.5 233.3
+          Z
+        "
+        fill={black}
+        fillRule="evenodd"
       />
 
-      {/* Bottom-right black circle */}
-      <circle cx="875" cy="773" r="126" fill={black} />
-
-      {/* Cutout facing inward */}
+      {/* Bottom-left circle: cutout faces inward */}
       <path
-        d="M 875 775 L 811 665 L 748 775 Z"
-        fill={white}
+        d="
+          M 125 650
+          A 125 125 0 1 1 124.99 650
+          Z
+          M 125 775
+          L 250 775
+          L 187.5 666.7
+          Z
+        "
+        fill={black}
+        fillRule="evenodd"
       />
 
-      {/* Three disconnected triangle edges */}
+      {/* Bottom-right circle: cutout faces inward */}
+      <path
+        d="
+          M 875 650
+          A 125 125 0 1 1 874.99 650
+          Z
+          M 875 775
+          L 750 775
+          L 812.5 666.7
+          Z
+        "
+        fill={black}
+        fillRule="evenodd"
+      />
+
+      {/* Three separate edges of the illusory triangle */}
       <g
         fill="none"
         stroke={black}
