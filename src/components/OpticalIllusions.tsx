@@ -36,6 +36,14 @@ function MullerLyer() {
 }
 
 
+
+
+
+
+
+
+
+
 function KanizsaTriangle() {
   const black = "#080808";
   const cream = "#F1E7C8";
@@ -51,54 +59,54 @@ function KanizsaTriangle() {
         display: "block",
         width: "100%",
         height: "auto",
-        backgroundColor: cream,
+        background: black,
       }}
     >
-      {/* Cream background */}
-      <rect width="400" height="400" fill={cream} />
+      {/* Background */}
+      <rect width="400" height="400" fill={black} />
 
-      {/* Top-left Pac-Man: opening faces inward */}
-      <circle cx="60" cy="95" r="50" fill={black} />
+      {/* Top Pac-Man: mouth faces downward */}
+      <circle cx="200" cy="65" r="34" fill={cream} />
       <path
-        d="M 60 95 L 110 95 L 85 138 Z"
-        fill={cream}
+        d="M 200 65 L 183 94 L 217 94 Z"
+        fill={black}
       />
 
-      {/* Top-right Pac-Man: opening faces inward */}
-      <circle cx="340" cy="95" r="50" fill={black} />
+      {/* Bottom-left Pac-Man: mouth faces upper-right */}
+      <circle cx="75" cy="300" r="34" fill={cream} />
       <path
-        d="M 340 95 L 290 95 L 315 138 Z"
-        fill={cream}
+        d="M 75 300 L 92 270.6 L 109 300 Z"
+        fill={black}
       />
 
-      {/* Bottom Pac-Man: opening faces upward */}
-      <circle cx="200" cy="342" r="50" fill={black} />
+      {/* Bottom-right Pac-Man: mouth faces upper-left */}
+      <circle cx="325" cy="300" r="34" fill={cream} />
       <path
-        d="M 200 342 L 172 294 L 228 294 Z"
-        fill={cream}
+        d="M 325 300 L 308 270.6 L 291 300 Z"
+        fill={black}
       />
 
-      {/* Top sides of the illusory triangle */}
+      {/* Three disconnected contour edges */}
       <g
         fill="none"
-        stroke={black}
-        strokeWidth="2.5"
+        stroke={cream}
+        strokeWidth="1.8"
         strokeLinecap="butt"
         strokeLinejoin="miter"
       >
-        <path d="M 153 94 L 200 12 L 247 94" />
+        {/* Upper-left edge */}
+        <path d="M 80 140 H 160 L 130 195" />
 
-        {/* Bottom-left contour */}
-        <path d="M 106 262 L 154 180 M 106 262 H 154" />
+        {/* Upper-right edge */}
+        <path d="M 240 140 H 320 L 280 195" />
 
-        {/* Bottom-right contour */}
-        <path d="M 294 180 L 342 262 H 246" />
+        {/* Bottom V */}
+        <path d="M 160 300 L 200 365 L 240 300" />
       </g>
     </svg>
   );
 }
 
-export default KanizsaTriangle;
 
 
 
