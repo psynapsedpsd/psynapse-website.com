@@ -47,55 +47,52 @@ function KanizsaTriangle() {
 
   return (
     <svg
-      viewBox="0 0 200 200"
+      viewBox="0 0 1000 1000"
       className="w-full h-full"
       xmlns="http://www.w3.org/2000/svg"
       role="img"
       aria-label="Kanizsa triangle optical illusion"
     >
-      <rect width="200" height="200" fill={white} />
+      {/* White background */}
+      <rect width="1000" height="1000" fill={white} />
 
-      {/* Top Pac-Man: opening faces down */}
+      {/* Top black circle */}
+      <circle cx="500" cy="125" r="125" fill={black} />
+
+      {/* Cutout facing downward */}
       <path
-        d="M 100 25
-           A 25 25 0 1 1 99.99 25
-           L 100 25
-           L 87.5 46.65
-           Z"
-        fill={black}
-        transform="translate(0 0)"
+        d="M 500 125 L 437 235 L 562 235 Z"
+        fill={white}
       />
 
-      {/* Bottom-left Pac-Man: opening faces upper-right */}
+      {/* Bottom-left black circle */}
+      <circle cx="125" cy="773" r="126" fill={black} />
+
+      {/* Cutout facing inward */}
       <path
-        d="M 25 155
-           A 25 25 0 1 1 24.99 155
-           L 46.65 142.5
-           L 25 142.5
-           Z"
-        fill={black}
+        d="M 125 775 L 189 665 L 252 775 Z"
+        fill={white}
       />
 
-      {/* Bottom-right Pac-Man: opening faces upper-left */}
+      {/* Bottom-right black circle */}
+      <circle cx="875" cy="773" r="126" fill={black} />
+
+      {/* Cutout facing inward */}
       <path
-        d="M 175 155
-           A 25 25 0 1 1 174.99 155
-           L 153.35 142.5
-           L 175 142.5
-           Z"
-        fill={black}
+        d="M 875 775 L 811 665 L 748 775 Z"
+        fill={white}
       />
 
-      {/* Triangle illusion: three separate black edges */}
+      {/* Three disconnected triangle edges */}
       <g
         fill="none"
         stroke={black}
-        strokeWidth="1.5"
+        strokeWidth="7"
         strokeLinecap="butt"
       >
-        <path d="M 25 70 H 75 L 50 113" />
-        <path d="M 125 70 H 175 L 150 113" />
-        <path d="M 75 155 L 100 198 L 125 155" />
+        <path d="M 120 343 H 375 L 250 562" />
+        <path d="M 625 343 H 880 L 750 562" />
+        <path d="M 375 775 L 500 998 L 625 775" />
       </g>
     </svg>
   );
