@@ -45,63 +45,62 @@ function MullerLyer() {
 
 
 function KanizsaTriangle() {
-  const black = "#080808";
-  const cream = "#F1E7C8";
+  const bg = "#F3E8CC";
+  const ink = "#080808";
+
+  const cx = 200;
+  const cy = 182;
+  const R = 130;                      // circumradius shared by both triangles
+  const r = 42;                       // pac-man radius
+  const arm = 78;                     // length of each corner-angle arm
+  const k = R * Math.cos(Math.PI / 6); // half-width of the triangles
+
+  const rad = (d: number) => (d * Math.PI) / 180;
+  const pt = (x: number, y: number, deg: number) =>
+    `${(x + r * Math.cos(rad(deg))).toFixed(2)} ${(y + r * Math.sin(rad(deg))).toFixed(2)}`;
+
+  // Pac-men sit on the vertices of the DOWNWARD triangle.
+  // `dir` points at the centre; the mouth spans ±30° so its edges
+  // line up with that triangle's sides.
+  const pacs = [
+    { x: cx - k, y: cy - R / 2, dir: 30 },   // top-left
+    { x: cx + k, y: cy - R / 2, dir: 150 },  // top-right
+    { x: cx,     y: cy + R,     dir: -90 },  // bottom
+  ];
+
+  const pacPath = ({ x, y, dir }: { x: number; y: number; dir: number }) =>
+    `M ${x} ${y} L ${pt(x, y, dir + 30)} A ${r} ${r} 0 1 1 ${pt(x, y, dir - 30)} Z`;
+
+  // Corner angles sit on the vertices of the UPWARD triangle.
+  // u1 / u2 are unit vectors along the two sides leaving each vertex.
+  const h = Math.sqrt(3) / 2;
+  const corners = [
+    { v: [cx, cy - R],         u1: [-0.5, h], u2: [0.5, h] },    // apex
+    { v: [cx - k, cy + R / 2], u1: [0.5, -h], u2: [1, 0] },      // bottom-left
+    { v: [cx + k, cy + R / 2], u1: [-0.5, -h], u2: [-1, 0] },    // bottom-right
+  ];
+
+  const cornerPath = ({ v, u1, u2 }: { v: number[]; u1: number[]; u2: number[] }) =>
+    `M ${v[0] + u1[0] * arm} ${v[1] + u1[1] * arm} L ${v[0]} ${v[1]} L ${v[0] + u2[0] * arm} ${v[1] + u2[1] * arm}`;
 
   return (
     <svg
       viewBox="0 0 400 400"
-      width="100%"
+      className="w-full h-full"
       xmlns="http://www.w3.org/2000/svg"
       role="img"
       aria-label="Kanizsa triangle optical illusion"
-      style={{
-        display: "block",
-        width: "100%",
-        height: "auto",
-        background: black,
-      }}
     >
-      {/* Background */}
-      <rect width="400" height="400" fill={black} />
+      <rect width="400" height="400" rx="10" fill={bg} />
 
-      {/* Top Pac-Man: mouth faces downward */}
-      <circle cx="200" cy="65" r="34" fill={cream} />
-      <path
-        d="M 200 65 L 183 94 L 217 94 Z"
-        fill={black}
-      />
+      {pacs.map((p, i) => (
+        <path key={`pac-${i}`} d={pacPath(p)} fill={ink} />
+      ))}
 
-      {/* Bottom-left Pac-Man: mouth faces upper-right */}
-      <circle cx="75" cy="300" r="34" fill={cream} />
-      <path
-        d="M 75 300 L 92 270.6 L 109 300 Z"
-        fill={black}
-      />
-
-      {/* Bottom-right Pac-Man: mouth faces upper-left */}
-      <circle cx="325" cy="300" r="34" fill={cream} />
-      <path
-        d="M 325 300 L 308 270.6 L 291 300 Z"
-        fill={black}
-      />
-
-      {/* Three disconnected contour edges */}
-      <g
-        fill="none"
-        stroke={cream}
-        strokeWidth="1.8"
-        strokeLinecap="butt"
-        strokeLinejoin="miter"
-      >
-        {/* Upper-left edge */}
-        <path d="M 80 140 H 160 L 130 195" />
-
-        {/* Upper-right edge */}
-        <path d="M 240 140 H 320 L 280 195" />
-
-        {/* Bottom V */}
-        <path d="M 160 300 L 200 365 L 240 300" />
+      <g fill="none" stroke={ink} strokeWidth="4" strokeLinejoin="miter" strokeLinecap="butt">
+        {corners.map((c, i) => (
+          <path key={`corner-${i}`} d={cornerPath(c)} />
+        ))}
       </g>
     </svg>
   );
